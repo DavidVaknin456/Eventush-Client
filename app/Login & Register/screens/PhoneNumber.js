@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
+import React, { useRef, useState } from "react";
 import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 import { app, auth } from "./Auth";
 import { PhoneAuthProvider } from "firebase/auth";
@@ -8,7 +8,7 @@ const PhoneNumber = ({ showMessage, setLoginState, setVerificationId }) => {
   const recaptchaVerifier = useRef(null);
   const [phoneNumber, setPhoneNumber] = useState();
 
-  const sendVerf = async () => {
+  const sendVery = async () => {
     try {
       const phoneProvider = new PhoneAuthProvider(auth);
       const verificationId = await phoneProvider.verifyPhoneNumber(
@@ -45,7 +45,7 @@ const PhoneNumber = ({ showMessage, setLoginState, setVerificationId }) => {
       <Button
         title="Send Verification Code"
         disabled={!phoneNumber}
-        onPress={sendVerf}
+        onPress={sendVery}
       />
     </View>
   );

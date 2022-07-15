@@ -13,8 +13,6 @@ const SmsVerification = ({ showMessage, verificationId, setLoginState }) => {
         verificationCode
       );
       await signInWithCredential(auth, credential);
-      setLoginState("7");
-      showMessage({ text: "Phone authentication successful 👍" });
     } catch (err) {
       showMessage({ text: `Error: ${err.message}`, color: "red" });
     }

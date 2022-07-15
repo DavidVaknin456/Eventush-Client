@@ -5,7 +5,6 @@ import { getAuth } from "firebase/auth";
 import { initFirebase } from "../util/FirebaseInit";
 import { PhoneNumber } from "./PhoneNumber";
 import { SmsVerification } from "./SmsVerification";
-import { HomeView } from "../../Screens/HomeView";
 
 initFirebase();
 
@@ -23,7 +22,7 @@ const Auth = () => {
 
   return (
     <View style={{ padding: 80, marginTop: 50 }}>
-      {loginState == "PhoneNumber" ? (
+      {loginState === "PhoneNumber" ? (
         <PhoneNumber
           setVerificationId={setVerificationId}
           setLoginState={setLoginState}
