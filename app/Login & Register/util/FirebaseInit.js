@@ -12,8 +12,8 @@ const firebaseConfig = {
 
 let initApp;
 
-function initFirebase() {
+const initFirebase = () => {
   initApp = initializeApp(firebaseConfig);
-  console.log("FIrebase is Initialized");
-}
+  console.log("Firebase is Initialized");
+};
 export { initApp, initFirebase };

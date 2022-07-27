@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Auth } from "../Login & Register/screens/Auth";
 import Pending from "../Login & Register/screens/Pending";
 import Register from "../Login & Register/screens/Register";
@@ -7,8 +7,11 @@ import { HomeView } from "./HomeView";
 import Stack from "../Login & Register/util/Stack";
 import useAuthentication from "../Login & Register/util/useAuthentication";
 import useRegister from "../Login & Register/util/useRegister";
+import { UserContext } from "./utils/UserContext";
+import useGetIDToken from "../Login & Register/util/useGetIDToken";
 
 export default function Entry({ navigation: { navigate, replace } }) {
+  const { tokenId } = useGetIDToken();
   const { isRegister } = useRegister();
   const { isAuthenticate } = useAuthentication();
 
@@ -22,7 +25,7 @@ export default function Entry({ navigation: { navigate, replace } }) {
     } else if (isAuthenticate && isRegister) {
       replace("loggedInAndRegister");
     }
-  }, [isAuthenticate]);
+  }, [isAuthenticate, isRegister]);
   return (
     <Stack.Navigator>
       <Stack.Screen name={AuthState.pending} component={Pending} />
