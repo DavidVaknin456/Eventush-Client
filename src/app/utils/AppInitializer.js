@@ -1,15 +1,18 @@
-import Entry from "../Entry";
+import Entry from "../Entry/Entry";
 import Stack from "../../Login & Register/util/Stack";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { UserContext } from "./UserContext";
 
 export default function AppInitializer() {
-  const [user, setUser] = useState("");
-  // const [token, setToken] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
+  const [user, setUser] = useState();
+  const [token, setToken] = useState();
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, token, setToken, refreshing, setRefreshing }}
+    >
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{

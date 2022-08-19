@@ -5,7 +5,7 @@ export default useAuthentication = () => {
   const [isAuthenticate, setIsAuthenticate] = useState();
 
   useEffect(() => {
-    console.log("eeee");
+    console.log("verify authentication ");
     getAuth().onAuthStateChanged((auth) => {
       setIsAuthenticate(!!auth);
     });

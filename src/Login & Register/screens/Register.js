@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { Button, SafeAreaView, StyleSheet, TextInput } from "react-native";
 import axios from "axios";
-import useGetIDToken from "../util/useGetIDToken";
-import { UserContext } from "../../Screens/utils/UserContext";
+import { UserContext } from "../../app/utils/UserContext";
 
 export default function Register() {
   const [name, onChangeName] = React.useState("");
@@ -19,6 +18,7 @@ export default function Register() {
 
   const { token } = useContext(UserContext);
   const authHeader = { Authorization: `Basic ${token}` };
+
   const options = {
     method: "POST",
     headers: authHeader,
@@ -35,7 +35,7 @@ export default function Register() {
       })
       .catch((error) => {
         console.error(error);
-        console.log("bla");
+        console.log("add user failed");
       });
   };
 
