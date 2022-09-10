@@ -4,6 +4,8 @@ import { UserContext } from "../../app/utils/UserContext";
 
 export default useGetUser = () => {
   const { user, setUser } = useContext(UserContext);
+
+  // const url = "http://localhost:3000/getUser";
   const url = "https://intelligent-livre-26497.herokuapp.com/getUser";
   const { token } = useContext(UserContext);
   const authHeader = { Authorization: `Basic ${token}` };
@@ -12,6 +14,7 @@ export default useGetUser = () => {
     headers: authHeader,
     url: url,
   };
+
   useEffect(() => {
     const getUser = async () => {
       console.log("get user from db");
@@ -21,10 +24,15 @@ export default useGetUser = () => {
           .then((res) => {
             console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", user);
             console.log(res.data);
-            setUser(res.data);
+            if (res.data) {
+              setUser(res.data);
+            } else {
+              setUser(false);
+            }
           })
           .catch((error) => {
-            console.error("print the error", error);
+            console.log("print the error");
+            console.error("--", error);
             console.log("+++++++++++++++++++++++++++++++++++++++++++++", user);
           });
       } else {

@@ -1,5 +1,5 @@
-import Entry from "../Entry/Entry";
-import Stack from "../../Login & Register/util/Stack";
+import Entry from "../../Entry";
+import Stack from "./Stack";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { UserContext } from "./UserContext";

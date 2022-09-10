@@ -1,9 +1,9 @@
 import * as React from "react";
-import Stack from "../../../Login & Register/util/Stack";
+import Stack from "../../utils/Stack";
 import { MenuView } from "./MenuView";
-import CreEvent from "./CreEvent";
+import CreateEvent from "./CreateEvent/CreateEvent";
 
-export default function MenuNavigator() {
+export default MenuNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="MenuView">
       <Stack.Screen
@@ -11,7 +11,7 @@ export default function MenuNavigator() {
         name="MenuView"
         component={MenuView}
       />
-      <Stack.Screen name="CreEve" component={CreEvent} />
+      <Stack.Screen name="CreateEvent" component={CreateEvent} />
     </Stack.Navigator>
   );
-}
+};

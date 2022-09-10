@@ -5,7 +5,7 @@ import useGetUser from "./useGetUser";
 export default useRegister = () => {
   useGetUser();
   const { user } = useContext(UserContext);
-  const [isRegister, setIsRegister] = useState();
+  const [isRegister, setIsRegister] = useState(null);
 
   useEffect(() => {
     console.log("verify registration");

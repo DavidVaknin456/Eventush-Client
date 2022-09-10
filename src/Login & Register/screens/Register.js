@@ -9,6 +9,7 @@ export default function Register() {
   const [city, onChangeCity] = React.useState("");
   const { user, setUser } = useContext(UserContext);
 
+  // const url = "http://localhost:3000/post";
   const url = "https://intelligent-livre-26497.herokuapp.com/post";
   const data = {
     name: name,

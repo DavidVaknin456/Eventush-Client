@@ -1,5 +1,6 @@
 import EventCard from "./EventCard";
-import { useCallback, useContext } from "react";
+import { UserContext } from "../../utils/UserContext";
+import { useContext, useCallback } from "react";
 import {
   Image,
   RefreshControl,
@@ -8,7 +9,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { UserContext } from "../../utils/UserContext";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -33,7 +33,7 @@ const MenuView = ({ navigation }) => {
       </ScrollView>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate("CreEve")}
+        onPress={() => navigation.navigate("CreateEvent")}
         style={styles.touchableOpacityStyle}
       >
         <Image
@@ -53,12 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
     backgroundColor: "#ecf0f1",
-  },
-  paragraph: {
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: 20,
   },
   touchableOpacityStyle: {
     position: "absolute",

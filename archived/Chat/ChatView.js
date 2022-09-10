@@ -17,32 +17,6 @@ const ChatView = ({ navigation }) => {
         <ChatCard navigation={navigation} />
         <ChatCard navigation={navigation} />
         <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
-        <ChatCard navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
   );

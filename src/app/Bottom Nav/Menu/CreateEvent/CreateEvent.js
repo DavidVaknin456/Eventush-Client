@@ -3,7 +3,9 @@ import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Slider from "@react-native-community/slider";
 import { Icon } from "react-native-elements";
-import { UserContext } from "../../utils/UserContext";
+import { UserContext } from "../../../utils/UserContext";
+import * as PropTypes from "prop-types";
+import MySlider from "./MySlider";
 import axios from "axios";
 import {
   Button,
@@ -14,23 +16,39 @@ import {
   View,
 } from "react-native";
 
-const CreEvent = ({ navigation }) => {
+function CustomSliderMarkerLeft(props) {
+  return null;
+}
+
+CustomSliderMarkerLeft.propTypes = { currentValue: PropTypes.number };
+
+function CustomSliderMarkerRight(props) {
+  return null;
+}
+
+CustomSliderMarkerRight.propTypes = { currentValue: PropTypes.number };
+const CreateEvent = ({ navigation }) => {
   const { token } = useContext(UserContext);
   const [category, setCategory] = useState("77");
   const [date, setDate] = useState();
   const [location, setLocation] = useState();
   const [description, setDescription] = useState();
   const [minAge, setMinAge] = useState();
+  const [minMembers, setMinMembers] = useState(2);
+  const [maxMembers, setMaxMembers] = useState(2);
 
-  const url = "http://localhost:3000/add-Event";
-  // const url = "https://intelligent-livre-26497.herokuapp.com/add-Event";
+  // const url = "http://localhost:3000/add-Event";
+  const url = "https://intelligent-livre-26497.herokuapp.com/add-Event";
   const authHeader = { Authorization: `Basic ${token}` };
   const data = {
     category: category,
     date: date,
     location: location,
     minAge: minAge,
+    minMembers: minMembers,
+    maxMembers: maxMembers,
     description: description,
+    isEventApproved: false,
   };
   const options = {
     method: "POST",
@@ -80,6 +98,7 @@ const CreEvent = ({ navigation }) => {
             margin: 20,
           }}
         >
+          <Text>Min Age: {minAge}</Text>
           <Slider
             value={minAge}
             onValueChange={setMinAge}
@@ -105,7 +124,13 @@ const CreEvent = ({ navigation }) => {
               ),
             }}
           />
-          <Text>Min Age: {minAge}</Text>
+
+          <MySlider
+            minMembers={minMembers}
+            setMinMembers={setMinMembers}
+            maxMembers={maxMembers}
+            setMaxMembers={setMaxMembers}
+          />
         </View>
         <Button onPress={handleSubmit} title="Submit" color="#841584" />
       </SafeAreaView>
@@ -174,7 +199,7 @@ const SelectCategory = ({ setCategory }) => {
   );
 };
 
-export default CreEvent;
+export default CreateEvent;
 
 const styles = StyleSheet.create({
   container: {

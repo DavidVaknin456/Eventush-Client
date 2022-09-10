@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { UserContext } from "../../app/utils/UserContext";
+import { UserContext } from "./UserContext";
 
 export default useGetIDToken = () => {
   const { setToken } = useContext(UserContext);

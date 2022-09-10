@@ -1,19 +1,19 @@
-import MenuNavigator from "../Home/Menu/MenuNavigator";
-import { MyEventTab } from "../Home/MyEvents/MyEventTab";
+import MenuNavigator from "./Menu/MenuNavigator";
+import MyEventsNavigator from "./MyEvents/MyEventsNavigator";
 import BottomTab from "../utils/BottomTab";
-import ChatNavigator from "../Home/Chat/ChatNavigator";
+import AdminEvents from "./AdminEvents/AdminEvents";
 import {
-  styleChatHeader,
+  styleAdminHeader,
   styleEventsHeader,
   styleMyEventsHeader,
-} from "../utils/HeaderDesign";
+} from "../HeaderNav/HeaderDesign";
 
 export default function NavTabView() {
   return (
     <BottomTab.Navigator initialRouteName="MenuNavigator">
       <BottomTab.Screen
-        name="MyEventTab"
-        component={MyEventTab}
+        name="MyEventsNavigator"
+        component={MyEventsNavigator}
         options={styleMyEventsHeader}
       />
       <BottomTab.Screen
@@ -22,9 +22,9 @@ export default function NavTabView() {
         options={styleEventsHeader}
       />
       <BottomTab.Screen
-        name="ChatNavigator"
-        component={ChatNavigator}
-        options={styleChatHeader}
+        name="AdminEvents"
+        component={AdminEvents}
+        options={styleAdminHeader}
       />
     </BottomTab.Navigator>
   );
