@@ -1,52 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Alert,
-  Button,
   Pressable,
   SafeAreaView,
-  SectionList,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
-
-const DATA = [
-  {
-    title: "Account",
-    data: ["dav@gmail.com"],
-  },
-  {
-    title: "Edit",
-    data: ["+972-53-234  ..."],
-  },
-  {
-    title: "Notifications",
-    data: ["Alert y/n"],
-  },
-  {
-    title: "Policy",
-    data: ["Terms of use", "Privacy"],
-  },
-];
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+import { UserContext } from "../../utils/UserContext";
 
 export default Settings = ({ navigation }) => {
+  const { user } = useContext(UserContext);
+  console.log(user);
   return (
     <SafeAreaView style={styles.container}>
-      <SectionList
-        sections={DATA}
-        keyExtractor={(item, index) => item + index}
-        renderItem={({ item }) => <Item title={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.header}>{title}</Text>
-        )}
-      />
+      <Text style={styles.title}>Account</Text>
+      <View style={styles.item}>
+        <Text>uid: {user["uid"]}</Text>
+      </View>
+      <Text style={styles.title}>Notifications</Text>
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => Alert.alert("Notification is on/off")}
+      >
+        <Text>Alert y/n</Text>
+      </TouchableOpacity>
+      <Text style={styles.title}>Policy</Text>
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => Alert.alert("Those are the terms of use ")}
+      >
+        <Text>Terms of use</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => Alert.alert("Privacy settings")}
+      >
+        <Text>Privacy</Text>
+      </TouchableOpacity>
+
       <Pressable
         style={styles.button}
         onPress={() => Alert.alert("Account Deleted")}
@@ -59,6 +53,7 @@ export default Settings = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     marginHorizontal: 16,
@@ -67,24 +62,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#d3d3d3",
     padding: 17,
     marginVertical: 8,
-    borderRadius: 8,
-  },
-  header: {
-    fontSize: 27,
+    borderRadius: 6,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
+    padding: 5,
   },
   button: {
-    marginHorizontal: 16,
-    marginVertical: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 17,
-    paddingHorizontal: 32,
     borderRadius: 12,
     elevation: 3,
     backgroundColor: "black",
+    position: "absolute",
+    bottom: 45,
+    width: "84.9%",
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
   },
   text: {
     fontSize: 18,
